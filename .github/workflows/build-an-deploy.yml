@@ -24,10 +24,12 @@ jobs:
           java-version: 21
 
       - name: Setup Maven
-        shell: powershell
         run: |
-          echo "MAVEN_HOME=$env:USERPROFILE\maven\apache-maven-3.8.8" >> $env:GITHUB_ENV
-          echo "$env:USERPROFILE\maven\apache-maven-3.8.8\bin" >> $env:GITHUB_PATH
+          set MAVEN_HOME=%USERPROFILE%\maven\apache-maven-3.8.8
+          set PATH=%MAVEN_HOME%\bin;%PATH%
+          echo MAVEN_HOME et PATH mis à jour
+          mvn -version
+        shell: cmd
         #      - name: Setup Maven
         #        shell: powershell
         #        run: |
