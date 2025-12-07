@@ -46,19 +46,16 @@ jobs:
         #          echo "$HOME/maven/bin" >> $GITHUB_PATH
 
         # Build and SonarQube analysis
-      - name: Build and analyze
+      - name: Build and analyze with SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: |
-          mvn -B verify sonar:sonar -Dsonar.project.settings=./sonar-project.properties
+        run: >-
+          mvn -B verify sonar:sonar
+          -Dsonar.projectKey=user-management
+          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         shell: cmd
-
-        # Build Docker image
-      - name: Build Docker image
-        run: |
-          docker build -t carikk/quality-gate:latest .
-
         # Push Docker image to DockerHub or other container registry
       - name: Log in to DockerHub
         shell: powershell
