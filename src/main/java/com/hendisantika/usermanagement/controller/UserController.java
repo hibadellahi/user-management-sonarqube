@@ -38,7 +38,7 @@ import static java.util.Arrays.asList;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-// test final 2
+// new comment
 public class UserController {
 
     private final String TAB_FORM = "formTab";
