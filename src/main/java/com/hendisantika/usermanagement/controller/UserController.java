@@ -38,7 +38,7 @@ import static java.util.Arrays.asList;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-// commentaire for test sonarqube
+// commentaire for test 2 sonarqube
 public class UserController {
 
     private final String TAB_FORM = "formTab";
